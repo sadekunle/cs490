@@ -5,8 +5,13 @@ echo '<pre>';
 // the last output line into $last_line. Stores the return value
 // of the shell command in $retval.
 //$newString =  exec('java Compiler '.'First Line\nSecond Line');
-$newString =  exec('java /afs/cad/u/d/j/dj65/public_html/cs490/Compiler '.'First Line\nSecond Line');
-
+$newString =  shell_exec('java Compiler "
+First Line Second Line
+The Next Line
+The fourth Line
+"
+');
+ 
 echo $newString;
 
 /*$last_line = system('ls --help', $retval);*/
