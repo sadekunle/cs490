@@ -71,43 +71,51 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 
     if((isset($_POST['user']) && isset($_POST['pwd'])))
     {
-        $url = 'http://web.njit.edu/~dj65/cs490/controller.php';
-        
-        $postdata = $_POST;
-        
-        $c = curl_init();
-        curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type' => 'text/plain'));
-        curl_setopt($c, CURLOPT_URL, $url);
-        curl_setopt($c, CURLOPT_POST, true);
-        curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($c, CURLOPT_POSTFIELDS,$postdata);
-        $result = curl_exec ($c);
-        curl_close ($c);
-		$jsonToPHPArrayResults = json_decode($result,true);
-		//print_r($jsonToPHPArrayResults);		
-		
-        if($jsonToPHPArrayResults['loginStatus'] == 'inDB'){
-			//echo "Welcome ".$jsonToPHPArrayResults['data'][0]['username']."<br>You are registered for ".$jsonToPHPArrayResults['data'][0]['coursename'];
-			$userName = $jsonToPHPArrayResults['data'][0]['username'];
-			initializePages();
-			session_start();
-			$_SESSION['userName'] = $userName;
-			echo $inDBPage;
-		}
-		else if($jsonToPHPArrayResults['loginStatus'] == 'notInDB'){
-			$loginMessage = 'You have successfully been authenticated, but you are not registered as a professor or student in our database
-			<br>Please talk to your administrator to have your account added to our database';
-			initializePages();
-			echo $homePage;
-		}
-		else if($jsonToPHPArrayResults['loginStatus'] == 'fail'){
-			$loginMessage = "Opps <br>Please try another username and password";
-			initializePages();
-			echo $homePage;
-		}
-		
-		//echo "<br>String Length equals: ".$jsonToPHPArrayResults['count'];
+		if($_POST['user'] != "" && $_POST['pwd'] != ""){
+			$url = 'http://web.njit.edu/~dj65/cs490/controller.php';
+			
+			$postdata = $_POST;
+			
+			$c = curl_init();
+			curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type' => 'text/plain'));
+			curl_setopt($c, CURLOPT_URL, $url);
+			curl_setopt($c, CURLOPT_POST, true);
+			curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($c, CURLOPT_POSTFIELDS,$postdata);
+			$result = curl_exec ($c);
+			curl_close ($c);
+			$jsonToPHPArrayResults = json_decode($result,true);
+			//print_r($jsonToPHPArrayResults);		
+			
+			if($jsonToPHPArrayResults['loginStatus'] == 'inDB'){
+				//echo "Welcome ".$jsonToPHPArrayResults['data'][0]['username']."<br>You are registered for ".$jsonToPHPArrayResults['data'][0]['coursename'];
+				$userName = $jsonToPHPArrayResults['data'][0]['username'];
+				initializePages();
+				session_start();
+				$_SESSION['userName'] = $userName;
+				echo $inDBPage;
+			}
+			else if($jsonToPHPArrayResults['loginStatus'] == 'notInDB'){
+				$loginMessage = 'You have successfully been authenticated, but you are not registered as a professor or student in our database
+				<br>Please talk to your administrator to have your account added to our database';
+				initializePages();
+				echo $homePage;
+			}
+			else if($jsonToPHPArrayResults['loginStatus'] == 'fail'){
+				$loginMessage = "Opps <br>Please try another username and password";
+				initializePages();
+				echo $homePage;
+			}
+			
+			//echo "<br>String Length equals: ".$jsonToPHPArrayResults['count'];
 
+		}
+		else{
+			session_destroy(); 
+			$userName = "";
+			initializePages();
+			echo $homePage;
+		}
     }
     else
     {
@@ -116,6 +124,7 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 		{	
 			if(isset($_POST['logOut'])){
 				session_destroy();
+				$userName = "";
 				initializePages();
 				echo $homePage;
 			}
@@ -127,6 +136,7 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 		}
 		else{
 			session_destroy(); 
+			$userName = "";
 			initializePages();
 			echo $homePage;
 		}
