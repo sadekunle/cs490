@@ -1,5 +1,12 @@
 <?php
-//Author: Desmond Johnson CS:490 Date: 9/26/13
+//Author: Desmond Johnson CS:490 Date: 10/12/13
+
+$resultsArray = Array();
+
+if(isset($_GET['method'])){	
+	$method = $_GET['method'];
+	$method($_GET['param1'],$_GET['param2'],$_GET['param3'],$_GET['param4'],$_GET['param5'],$_GET['param6']);
+}
 
 if((isset($_POST['user'])) && (isset($_POST['pwd'])) )
 {	
@@ -7,7 +14,7 @@ if((isset($_POST['user'])) && (isset($_POST['pwd'])) )
 		$ldapconn = ldap_connect("njitdm.campus.njit.edu");
 		$ldapbind = ldap_bind($ldapconn, $uname, $_POST['pwd']);
 		
-		$resultsArray = Array();
+
 		$resultsArray['loginStatus'] = "";
 		
 		if ($ldapbind) {
@@ -49,6 +56,21 @@ if((isset($_POST['user'])) && (isset($_POST['pwd'])) )
 else
 {
 	
+}
+
+//Test function
+function printMessage(){
+	echo "printMessage function just ran";
+}
+
+//Test function
+function writeMessage(){
+	echo "writeMessage function just ran";
+}
+
+//Test function
+function newMessage($param){
+	echo $param;
 }
 
 ?>
