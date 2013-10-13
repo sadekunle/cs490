@@ -1,0 +1,97 @@
+#head{
+	text-align:center;
+	font:30px bold;
+	font-family:cursive;
+}
+
+#login{
+	background-image: linear-gradient(bottom, rgb(250,241,240) 10%, rgb(250,238,237) 55%, rgb(255,246,245) 78%);
+	background-image: -o-linear-gradient(bottom, rgb(250,241,240) 10%, rgb(250,238,237) 55%, rgb(255,246,245) 78%);
+	background-image: -moz-linear-gradient(bottom, rgb(250,241,240) 10%, rgb(250,238,237) 55%, rgb(255,246,245) 78%);
+	background-image: -webkit-linear-gradient(bottom, rgb(250,241,240) 10%, rgb(250,238,237) 55%, rgb(255,246,245) 78%);
+	background-image: -ms-linear-gradient(bottom, rgb(250,241,240) 10%, rgb(250,238,237) 55%, rgb(255,246,245) 78%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.1, rgb(250,241,240)),
+		color-stop(0.55, rgb(250,238,237)),
+		color-stop(0.78, rgb(255,246,245))
+	);
+	margin:170px auto 50px auto;
+}
+
+#loginMessage{
+	font:17px bold;
+	font-family:cursive;
+	margin:0px auto;
+}
+
+#logOut{
+text-align:right;
+margin:-17px 0px 0px 0px;
+font-family:cursive;
+}
+
+.shadow{
+	-webkit-box-shadow: 1px 2px 20px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 2px 20px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 2px 20px rgba(50, 50, 50, 0.75);
+	padding:28px 18px 18px 18px;
+	width:240px;
+}
+
+.roundBorder{
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
+
+#container{
+
+	padding:6px;
+	width:1280px;
+	margin:0 auto;
+	min-height:768px;
+	
+	background-image: linear-gradient(bottom, rgb(255,231,229) 10%, rgb(255,236,235) 55%, rgb(247,235,234) 78%);
+	background-image: -o-linear-gradient(bottom, rgb(255,231,229) 10%, rgb(255,236,235) 55%, rgb(247,235,234) 78%);
+	background-image: -moz-linear-gradient(bottom, rgb(255,231,229) 10%, rgb(255,236,235) 55%, rgb(247,235,234) 78%);
+	background-image: -webkit-linear-gradient(bottom, rgb(255,231,229) 10%, rgb(255,236,235) 55%, rgb(247,235,234) 78%);
+	background-image: -ms-linear-gradient(bottom, rgb(255,231,229) 10%, rgb(255,236,235) 55%, rgb(247,235,234) 78%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.1, rgb(255,231,229)),
+		color-stop(0.55, rgb(255,236,235)),
+		color-stop(0.78, rgb(247,235,234))
+	);
+}
+
+#container #head2{
+	font:20px bold;
+	font-family:cursive;
+	margin:3px;
+}
+
+#container #leftPanel{
+	background-color:white;
+	border:1px solid #d6d9db;
+	float:left;
+	margin:3px;
+	width:19%;
+	min-height:722px;
+}
+
+#container #rightPanel{
+	background-color:white;
+	border:1px solid #d6d9db;
+	float:right;
+	margin:3px;
+	width:79%;
+	min-height:722px;
+}
