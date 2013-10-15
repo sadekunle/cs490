@@ -15,11 +15,11 @@ if((isset($_POST['user'])) && (isset($_POST['pwd'])) )
 		$ldapbind = ldap_bind($ldapconn, $uname, $_POST['pwd']);
 		
 
-		$resultsArray['loginStatus'] = "";
+		$resultsArray['loginStatus'] = ""; 
 		
 		if ($ldapbind) {
-			$url = 'http://web.njit.edu/~cem6/dblogin.php?user='.$_POST['user'];
-			//$url = 'http://web.njit.edu/~cem6/dblogin.php?user=cem6';
+			//$url = 'http://web.njit.edu/~cem6/dblogin.php?user='.$_POST['user'];
+			$url = 'http://web.njit.edu/~cem6/dblogin.php?user=cem6';
 			$postdata = $_POST;
 			$c = curl_init();
 			curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type' => 'text/plain'));
@@ -70,6 +70,11 @@ function writeMessage(){
 
 //Test function
 function newMessage($param){
+	echo $param;
+}
+
+//Test function
+function someMadeUpMethod($param){
 	echo $param;
 }
 

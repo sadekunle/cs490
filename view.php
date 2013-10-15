@@ -59,7 +59,26 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 				</div>
 				<div id="leftPanel">
 					<div id="addQuestions" class="button">Add Questions to Question Bank</div>
-					<div id="addQuestionsDropDown" class="buttonDropDown">Some dummy Text</div>
+					<div id="addQuestionsDropDown" class="buttonDropDown">
+						<div id="multipleChoice">
+							<table>	
+								<tr>
+									<td>
+										Select Question Type
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<form>
+											<input id="mc" type="radio" name="questionType" value="mc">Multiple Choice<br>
+											<input id="oe" type="radio" name="questionType" value="oe">Open Ended<br>
+											<input id="tf" type="radio" name="questionType" value="tf">True/False
+										</form>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
 					<div id="makeTest" class="button">Make Test</div>
 					<div id="makeTestDropDown" class="buttonDropDown">Some dummy text</div>
 					<div id="GetReport" class="button">Get Report</div>
@@ -80,7 +99,7 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 }
 
 
-    if((isset($_POST['user']) && isset($_POST['pwd'])))
+    if((isset($_POST['user']) && isset($_POST['pwd']) ))
     {
 		if($_POST['user'] != "" && $_POST['pwd'] != ""){
 			$url = 'http://web.njit.edu/~dj65/cs490/controller.php';
@@ -104,18 +123,21 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 				initializePages();
 				session_start();
 				$_SESSION['userName'] = $userName;
-				echo $inDBPage;
+				if((isset($_GET['method']) != '1')){
+					echo $inDBPage;
+				}
 			}
 			else if($jsonToPHPArrayResults['loginStatus'] == 'notInDB'){
 				$loginMessage = 'You have successfully been authenticated, but you are not registered as a professor or student in our database
 				<br>Please talk to your administrator to have your account added to our database';
 				initializePages();
-				echo $homePage;
+					echo $homePage;
+				
 			}
 			else if($jsonToPHPArrayResults['loginStatus'] == 'fail'){
 				$loginMessage = "Opps <br>Please try another username and password";
 				initializePages();
-				echo $homePage;
+					echo $homePage;
 			}
 			
 			//echo "<br>String Length equals: ".$jsonToPHPArrayResults['count'];
@@ -125,7 +147,9 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 			session_destroy(); 
 			$userName = "";
 			initializePages();
-			echo $homePage;
+			if((isset($_GET['method']) != '1')){
+				echo $homePage;
+			}
 		}
     }
     else
@@ -142,20 +166,21 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 			else{
 				$userName = $_SESSION['userName'];
 				initializePages();
-				echo $inDBPage;
+				echo $inDBPage;				
+				
 			}
 		}
 		else{
 			session_destroy(); 
 			$userName = "";
 			initializePages();
-			echo $homePage;
+				echo $homePage;			
 		}
 
     }
 	
 	//Receives and Ajax GET request, checks if the user session still exists, and forwards the Ajax request to the Controller
-	if((isset($_GET['method']) && isset($_SESSION['userName']))){
+	if((isset($_GET['method']) && isset($_SESSION['userName']) )){
 		if($_GET['method'] != "" && $_SESSION['userName'] != "" ){
 			$param1;
 			$param2;
@@ -194,6 +219,7 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 				$param6 = '';
 			}
 			echo file_get_contents('http://web.njit.edu/~dj65/cs490/controller.php?method='.$_GET['method'].$param1.$param2.$param3.$param4.$param5.$param6);
+			
 		}
 	}
     
