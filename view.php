@@ -43,6 +43,8 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 	<html>
 		<head>
 			<link rel="stylesheet" type="text/css" href="css/style.css">
+			<script type="text/javascript" src="scripts/jquery.min.js"></script>
+			<script type="text/javascript" src="scripts/script.js"></script>			
 		</head>
 		<body>
 			<div id="container" class="shadow" >
@@ -56,7 +58,16 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 					</form>
 				</div>
 				<div id="leftPanel">
-
+					<div id="addQuestions" class="button">Add Questions to Question Bank</div>
+					<div id="addQuestionsDropDown" class="buttonDropDown">Some dummy Text</div>
+					<div id="makeTest" class="button">Make Test</div>
+					<div id="makeTestDropDown" class="buttonDropDown">Some dummy text</div>
+					<div id="GetReport" class="button">Get Report</div>
+					<div id="GetReportDropDown" class="buttonDropDown">Some dummy text</div>
+					<div id="seeTest" class="button" >See Available Test</div>
+					<div id="seeTestDropDown"class="buttonDropDown">Some dummy text</div>
+					<div id="seeHistory" class="button">See Test History</div>
+					<div id="seeHistoryDropDown" class="buttonDropDown">Some dummy text</div>
 				</div>
 				<div id="rightPanel" class="roundBorder">
 
@@ -143,7 +154,48 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 
     }
 	
-	
+	//Receives and Ajax GET request, checks if the user session still exists, and forwards the Ajax request to the Controller
+	if((isset($_GET['method']) && isset($_SESSION['userName']))){
+		if($_GET['method'] != "" && $_SESSION['userName'] != "" ){
+			$param1;
+			$param2;
+			$param3;
+			$param4;
+			$param5;
+			$param6;
+			if(isset($_GET['param1'])){
+				$param1 = '&param1='.$_GET['param1'];
+			}else{
+				$param1 = '';
+			}
+			if(isset($_GET['param2'])){
+				$param2 = '&param2='.$_GET['param2'];
+			}else{
+				$param2 = '';
+			}
+			if(isset($_GET['param3'])){
+				$param3 = '&param3='.$_GET['param3'];
+			}else{
+				$param3 = '';
+			}
+			if(isset($_GET['param4'])){
+				$param4 = '&param4='.$_GET['param4'];
+			}else{
+				$param4 = '';
+			}
+			if(isset($_GET['param5'])){
+				$param5 = '&param5='.$_GET['param5'];
+			}else{
+				$param5 = '';
+			}
+			if(isset($_GET['param6'])){
+				$param6 = '&param6'.$_GET['param6'];
+			}else{
+				$param6 = '';
+			}
+			echo file_get_contents('http://web.njit.edu/~dj65/cs490/controller.php?method='.$_GET['method'].$param1.$param2.$param3.$param4.$param5.$param6);
+		}
+	}
     
 ?>
 
