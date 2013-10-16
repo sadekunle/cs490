@@ -28,7 +28,6 @@ $( document ).ready(function() {
 	$("#makeTest").click(function(){
 		allButtonsSlideUp();
 		$("#makeTestDropDown").slideDown();
-		$("#rightPanel").html("<form action=\"\" method=\"post\"><table><tr><td>Username</td><td><input type=\"text\" name=\"user\"></td></tr><tr><td>Password</td><td><input type=\"password\" name=\"pwd\"></td></tr></table><input type=\"submit\" value=\"Login\"></form>");
 	});
 	$("#GetReport").click(function(){
 		allButtonsSlideUp();
@@ -56,6 +55,13 @@ $( document ).ready(function() {
 	$("#oe").click(function(){
 		var openEndedHtml = '<div id="openEndedDiv" style="padding:20px"><table><tr><td>Enter Question Here </td><td><div><textarea cols="85" rows="15"></textarea></div></td></tr><tr><td><br></td><td><br></td></tr><tr><td>Enter Answer Here </td><td><div><textarea cols="85" rows="15"></textarea></div></td></tr><tr><td></td><td style="float:right"><input type="submit"></input></td></tr></table></div>';
 		$("#rightPanel").html(openEndedHtml);	
+	});
+	
+	$("#makeTest").click(function(){
+		//Ajax request will go here
+		var makeTestHtml = '<div id="makeTestCourseSelect"><table><tr><td>Choose where the questions will come from</td></tr><tr><td><select id="makeTestSelection"><option value="cs490">cs490</option><option value="cs491">cs491</option><option value="cs431">cs431</option><option value="cs435">cs435</option></select></td></tr></table></div><br>';
+		$("#makeTestDropDown").html(makeTestHtml);	
+		//$("#rightPanel").html(openEndedHtml);	
 	});
  
 });

@@ -82,14 +82,47 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 					<div id="makeTest" class="button">Make Test</div>
 					<div id="makeTestDropDown" class="buttonDropDown">Some dummy text</div>
 					<div id="GetReport" class="button">Get Report</div>
-					<div id="GetReportDropDown" class="buttonDropDown">Some dummy text</div>
+					<div id="GetReportDropDown" class="buttonDropDown">
+						<div id="openEndedDiv" style="padding:20px">
+							<table>	
+								<tr>
+									<th>Choose a range</th>
+								</tr>
+								<tr>
+									<td><br></td><td><br></td>
+								</tr>		
+								<tr>
+									<td>Start Date</td>
+								</tr>	
+								<tr>
+									<td><input type="date"></input></td>
+								</tr>
+								<tr>
+									<td><br></td><td><br></td>
+								</tr>
+								<tr>
+									<td>End Date</td>
+								</tr>		
+								<tr>
+									<td><input type="date"></input</td>
+								</tr>
+								<tr>
+									<td><br></td><td><br></td>
+								</tr>		
+								<tr>
+									<td style="float:right"><input type="submit" value="Get Test Results"></input></td>
+								</tr>
+							</table>
+						</div>
+					</div>
 					<div id="seeTest" class="button" >See Available Test</div>
-					<div id="seeTestDropDown"class="buttonDropDown">Some dummy text</div>
-					<div id="seeHistory" class="button">See Test History</div>
-					<div id="seeHistoryDropDown" class="buttonDropDown">Some dummy text</div>
+					<div id="seeTestDropDown"class="buttonDropDown">Some dummy text<br>(data from the database will be populated in the main panel)</div>
+					<div id="seeHistory" class="button">See Past Test Results</div>
+					<div id="seeHistoryDropDown" class="buttonDropDown">Some dummy text<br>(data from the database will be populated in the main panel)</div>
 				</div>
 				<div id="rightPanel" class="roundBorder">
-
+					<div style="left:35%;top:35%;opacity:0.1;filter:alpha(opacity=10);position:absolute;z-index:103"><img src="images/flag.gif"></img></div>
+					<div style="left:35%;top:35%;opacity:0.8;filter:alpha(opacity=80);position:absolute;z-index:101"><img src="images/njit.jpg"></img></div>
 				</div>
 			</div>
 		</body>

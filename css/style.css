@@ -96,8 +96,8 @@ font-family:cursive;
 }
 
 .buttonDropDown{
-	padding:4px;
-	height:200px;
+	padding:10px;
+
 	-moz-box-shadow:inset 0px 1px 0px 0px #fff8f7;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #fff8f7;
 	box-shadow:inset 0px 1px 0px 0px #fff8f7;
