@@ -1,22 +1,24 @@
 
 var runOnce = false;
+var username;
 
 $( document ).ready(function() {
+	getUserRole();
 	allButtonsHide();
+	getUserRole();
 	$("#addQuestions").click(function(){
 		allButtonsSlideUp();
 		$("#addQuestionsDropDown").slideDown();
-		var htmlCourseBuilder;		
+		var htmlCourseBuilder;	
 		var ajaxRequest = $.ajax({
-							url:'?method=someMadeUpMethod&param1=someMadeUpParameter', 
-							//url:'http://web.njit.edu/~cem6/dblogin.php?user=cem6', 
-							success:function(){
-							//result = JSON.parse(ajaxRequest.responseText);
-								//alert(ajaxRequest.responseText);
-								//alert(result[0]['username']);
-								
-							}
-						});
+			url:'?method=getCourses&param1='+username, 
+			success:function(){
+			result = JSON.parse(ajaxRequest.responseText);
+				//alert(ajaxRequest.responseText);
+				//alert(result[0]['username']);
+			}
+		});
+		
 		//This string will be built from results from the server (in this case the results are simulated)				
 		htmlCourseBuilder = '<div id="courseSelect"><table><tr><td>Choose the desired course</td></tr><tr><td><select><option value="cs490">cs490</option><option value="cs491">cs491</option><option value="cs431">cs431</option><option value="cs435">cs435</option></select></td></tr></table></div><br>';
 		if(runOnce == false){
@@ -75,12 +77,39 @@ function allButtonsSlideUp(){
 }
 
 function allButtonsHide(){
+		$("#seeTest").hide();
+		$("#seeHistory").hide();
+		$("#addQuestions").hide();
+		$("#makeTest").hide();
+		$("#GetReport").hide();	
 		$("#addQuestionsDropDown").hide();
 		$("#makeTestDropDown").hide();
 		$("#GetReportDropDown").hide();
 		$("#seeTestDropDown").hide();
 		$("#seeHistoryDropDown").hide();
 }
+
+function getUserRole(){
+	username = document.getElementById("hiddenUserName").value;
+	var ajaxRequest = $.ajax({
+					url:'?method=getUserRole&param1='+username, 
+					success:function(){
+					result = JSON.parse(ajaxRequest.responseText);
+						//alert(ajaxRequest.responseText);
+						//alert(result[0]['username']);
+						if(result[0]['role'] == 'student'){
+							$("#seeTest").show();
+							$("#seeHistory").show();
+						}
+						if(result[0]['role'] == 'teacher'){
+							$("#addQuestions").show();
+							$("#makeTest").show();
+							$("#GetReport").show();	
+						}
+					}
+			});
+}
+
 
 //Ajax template
 

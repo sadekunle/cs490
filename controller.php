@@ -18,8 +18,8 @@ if((isset($_POST['user'])) && (isset($_POST['pwd'])) )
 		$resultsArray['loginStatus'] = ""; 
 		
 		if ($ldapbind) {
-			//$url = 'http://web.njit.edu/~cem6/dblogin.php?user='.$_POST['user'];
-			$url = 'http://web.njit.edu/~cem6/dblogin.php?user=cem6';
+			$url = 'http://web.njit.edu/~cem6/dblogin.php?user='.$_POST['user'];
+			//$url = 'http://web.njit.edu/~cem6/dblogin.php?user=cem6';
 			$postdata = $_POST;
 			$c = curl_init();
 			curl_setopt($c, CURLOPT_HTTPHEADER, array('Content-Type' => 'text/plain'));
@@ -76,6 +76,15 @@ function newMessage($param){
 //Test function
 function someMadeUpMethod($param){
 	echo $param;
+}
+
+function getUserRole($param){
+	echo file_get_contents('http://web.njit.edu/~cem6/dblogin.php?method=checkRole&param1='.$param);
+	//echo 'http://web.njit.edu/~cem6/dblogin.php?method=someText&param1='.$param;
+} 
+
+function getCourses($param){
+	echo file_get_contents('http://web.njit.edu/~cem6/dblogin.php?method=checkRole&param1='.$param);
 }
 
 ?>

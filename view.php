@@ -125,6 +125,7 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 					<div style="left:35%;top:35%;opacity:0.8;filter:alpha(opacity=80);position:absolute;z-index:101"><img src="images/njit.jpg"></img></div>
 				</div>
 			</div>
+			<input id="hiddenUserName" type="hidden" value="'.$userName.'"></input>
 		</body>
 	</html>	
 	';
@@ -180,9 +181,7 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 			session_destroy(); 
 			$userName = "";
 			initializePages();
-			if((isset($_GET['method']) != '1')){
 				echo $homePage;
-			}
 		}
     }
     else
@@ -199,7 +198,9 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 			else{
 				$userName = $_SESSION['userName'];
 				initializePages();
-				echo $inDBPage;				
+				if((isset($_GET['method']) != '1')){
+					echo $inDBPage;
+				}
 				
 			}
 		}
