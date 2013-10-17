@@ -1,5 +1,5 @@
 <?php
-//Author: Desmond Johnson CS:490 Date: 10/12/13
+//Author: Desmond Johnson CS:490 Date: 10/17/13
 
 $resultsArray = Array();
 
