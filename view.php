@@ -135,6 +135,7 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 
     if((isset($_POST['user']) && isset($_POST['pwd']) ))
     {
+	
 		if($_POST['user'] != "" && $_POST['pwd'] != ""){
 			$url = 'http://web.njit.edu/~dj65/cs490/controller.php';
 			
@@ -150,7 +151,6 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 			curl_close ($c);
 			$jsonToPHPArrayResults = json_decode($result,true);
 			//print_r($jsonToPHPArrayResults);		
-			
 			if($jsonToPHPArrayResults['loginStatus'] == 'inDB'){
 				//echo "Welcome ".$jsonToPHPArrayResults['data'][0]['username']."<br>You are registered for ".$jsonToPHPArrayResults['data'][0]['coursename'];
 				$userName = $jsonToPHPArrayResults['data'][0]['username'];
@@ -222,6 +222,24 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 			$param4;
 			$param5;
 			$param6;
+			$param7;
+			$param8;
+			$param9;
+			$param10;
+			$param11;
+			$param12;
+			$param13;
+			$param14;
+			$param15;
+			$param16;
+			$param17;
+			$param18;
+			$param19;
+			$param20;
+			$param21;
+			$param22;
+			$param23;
+			$param24;			
 			if(isset($_GET['param1'])){
 				$param1 = '&param1='.$_GET['param1'];
 			}else{
@@ -248,11 +266,101 @@ global $userName, $loginMessage, $homePage, $inDBPage;
 				$param5 = '';
 			}
 			if(isset($_GET['param6'])){
-				$param6 = '&param6'.$_GET['param6'];
+				$param6 = '&param6='.$_GET['param6'];
 			}else{
 				$param6 = '';
 			}
-			echo file_get_contents('http://web.njit.edu/~dj65/cs490/controller.php?method='.$_GET['method'].$param1.$param2.$param3.$param4.$param5.$param6);
+			if(isset($_GET['param7'])){
+				$param7 = '&param7='.$_GET['param7'];
+			}else{
+				$param7 = '';
+			}
+			if(isset($_GET['param8'])){
+				$param8 = '&param8='.$_GET['param8'];
+			}else{
+				$param8 = '';
+			}
+			if(isset($_GET['param9'])){
+				$param9 = '&param9='.$_GET['param9'];
+			}else{
+				$param9 = '';
+			}
+			if(isset($_GET['param10'])){
+				$param10 = '&param10='.$_GET['param10'];
+			}else{
+				$param10 = '';
+			}
+			if(isset($_GET['param11'])){
+				$param11 = '&param11='.$_GET['param11'];
+			}else{
+				$param11 = '';
+			}
+			if(isset($_GET['param12'])){
+				$param12 = '&param12='.$_GET['param12'];
+			}else{
+				$param12 = '';
+			}
+			if(isset($_GET['param13'])){
+				$param13 = '&param13='.$_GET['param13'];
+			}else{
+				$param13 = '';
+			}
+			if(isset($_GET['param14'])){
+				$param14 = '&param14='.$_GET['param14'];
+			}else{
+				$param14 = '';
+			}
+			if(isset($_GET['param15'])){
+				$param15 = '&param15='.$_GET['param15'];
+			}else{
+				$param15 = '';
+			}
+			if(isset($_GET['param16'])){
+				$param16 = '&param16='.$_GET['param16'];
+			}else{
+				$param16 = '';
+			}
+			if(isset($_GET['param17'])){
+				$param17 = '&param17='.$_GET['param17'];
+			}else{
+				$param17 = '';
+			}
+			if(isset($_GET['param18'])){
+				$param18 = '&param18='.$_GET['param18'];
+			}else{
+				$param18 = '';
+			}
+			if(isset($_GET['param19'])){
+				$param19 = '&param19='.$_GET['param19'];
+			}else{
+				$param19 = '';
+			}
+			if(isset($_GET['param20'])){
+				$param20 = '&param20='.$_GET['param20'];
+			}else{
+				$param20 = '';
+			}
+			if(isset($_GET['param21'])){
+				$param21 = '&param21='.$_GET['param21'];
+			}else{
+				$param21 = '';
+			}
+			if(isset($_GET['param22'])){
+				$param22 = '&param22='.$_GET['param22'];
+			}else{
+				$param22 = '';
+			}
+			if(isset($_GET['param23'])){
+				$param23 = '&param23='.$_GET['param23'];
+			}else{
+				$param23 = '';
+			}
+			if(isset($_GET['param24'])){
+				$param24 = '&param24='.$_GET['param24'];
+			}else{
+				$param24 = '';
+			}			
+			echo file_get_contents('http://web.njit.edu/~dj65/cs490/controller.php?method='.$_GET['method'].$param1.$param2.$param3.$param4.$param5.$param6.$param7.$param8.$param9.$param10.$param11.$param12.$param13.$param14.$param15.$param16.$param17.$param18.$param19.$param20.$param21.$param22.$param23.$param24);
 			
 		}
 	}

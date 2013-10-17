@@ -5,7 +5,7 @@ $resultsArray = Array();
 
 if(isset($_GET['method'])){	
 	$method = $_GET['method'];
-	$method($_GET['param1'],$_GET['param2'],$_GET['param3'],$_GET['param4'],$_GET['param5'],$_GET['param6']);
+	$method($_GET['param1'],$_GET['param2'],$_GET['param3'],$_GET['param4'],$_GET['param5'],$_GET['param6'],$_GET['param7'],$_GET['param8'],$_GET['param9'],$_GET['param10'],$_GET['param11'],$_GET['param12'],$_GET['param13'],$_GET['param14'],$_GET['param15'],$_GET['param16'],$_GET['param17'],$_GET['param18'],$_GET['param19'],$_GET['param20'],$_GET['param21'],$_GET['param22'],$_GET['param23'],$_GET['param24']);
 }
 
 if((isset($_POST['user'])) && (isset($_POST['pwd'])) )
@@ -80,11 +80,10 @@ function someMadeUpMethod($param){
 
 function getUserRole($param){
 	echo file_get_contents('http://web.njit.edu/~cem6/dblogin.php?method=checkRole&param1='.$param);
-	//echo 'http://web.njit.edu/~cem6/dblogin.php?method=someText&param1='.$param;
 } 
 
-function getCourses($param){
-	echo file_get_contents('http://web.njit.edu/~cem6/dblogin.php?method=checkRole&param1='.$param);
+function returnCourses(){
+	echo file_get_contents('http://web.njit.edu/~cem6/dblogin.php?method=returnCourses');
 }
 
 ?>
